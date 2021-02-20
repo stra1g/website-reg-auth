@@ -1,0 +1,131 @@
+#page-landing{
+    width: 100vw;
+    height: 100vh;
+    background: #FBF6F6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-landing .content-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    color: #000000;
+}
+
+#page-landing .content-wrapper .left-content{
+    position: absolute;
+    background: linear-gradient(180deg, #9225FF 0%, rgba(210, 164, 255, 0.416667) 58.33%, rgba(255, 255, 255, 0) 100%), #310198;
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+} 
+
+#page-landing .content-wrapper .left-content .info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px 0 15px 0;
+}
+
+#page-landing .content-wrapper .left-content .info .description {
+    height: 35px;
+    width: 364px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#page-landing .content-wrapper .left-content .info .description span {
+    height: 26px;
+    font-size: 20px;
+}
+
+#page-landing .content-wrapper .right-content{
+    z-index: 1;
+    position: absolute;
+    background: #fff;
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    right: 0px;
+    justify-content: center;
+    align-items: center;
+} 
+
+#page-landing .content-wrapper .right-content .info{
+    width: 430px;
+    height: 590px;
+}
+
+#page-landing .content-wrapper .right-content .info .main{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+#page-landing .content-wrapper .right-content .info .secundary{
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+#page-landing .content-wrapper .right-content .info .buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+#page-landing .content-wrapper .right-content .info .buttons .button-link{
+    text-decoration: none;
+}
+
+
+#page-landing .content-wrapper .right-content .info .buttons .button-sign-up{
+    margin-bottom: 10px;
+    display: flex;
+    width: 350px;
+    height: 45px;
+    background: #42078E;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+
+    transition: background-color 0.2s;
+}
+
+#page-landing .content-wrapper .right-content .info .buttons .button-sign-up:hover{
+    background: #8338e6;
+}
+
+#page-landing .content-wrapper .right-content .info .buttons .button-login{
+    display: flex;
+    width: 350px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    color: #42078E;
+    border: 1px solid #42078E;
+
+    transition: background-color 0.2s;
+}
+
+#page-landing .content-wrapper .right-content .info .buttons .button-login:hover{
+    background: #d0bce9;
+}
