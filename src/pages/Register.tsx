@@ -32,7 +32,7 @@ function Register() {
   return (
     <div className="main">
       <div className="content">
-        <div className="form-register">
+        <div className="form">
           <div className="header-form">
             <img src={logo} alt="logo" />
             <h1><span>Sign up to app</span></h1>

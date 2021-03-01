@@ -1,5 +1,14 @@
-#login-page {
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(180deg, #AF59F2 0%, rgba(255, 255, 255, 0) 100%), #310198;
+.footer-divider{
+  margin: 0 5px;
+}
+
+.sign-up-link{
+  text-decoration: none;
+  color: #42078E;
+
+  transition: color 0.2s;
+}
+
+.footer-form .footer-block .sign-up-link:hover {
+  color: #8338e6;
 }
