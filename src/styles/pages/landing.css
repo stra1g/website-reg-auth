@@ -1,136 +1,123 @@
-#page-landing{
-    width: 100vw;
-    height: 100vh;
-    background: #FBF6F6;
+.landing-page{
+  width: 100vw;
+  height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #ebe6e6;
+
+  display: flex;
+  flex-direction: row;
 }
 
-#page-landing .content-wrapper{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    
-    color: #000000;
+.left-content {
+  background: linear-gradient(180deg, #9225FF 0%, rgba(210, 164, 255, 0.416667) 58.33%, rgba(255, 255, 255, 0) 100%), #310198;
+
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
-#page-landing .content-wrapper .left-content{
-    position: absolute;
-    background: linear-gradient(180deg, #9225FF 0%, rgba(210, 164, 255, 0.416667) 58.33%, rgba(255, 255, 255, 0) 100%), #310198;
-
-    width: 50%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    left: 0px;
-    justify-content: center;
-    align-items: center;
-} 
-
-#page-landing .content-wrapper .left-content .info {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 15px 0 15px 0;
+.l-content-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
-#page-landing .content-wrapper .left-content .info .description {
-    height: 35px;
-    width: 364px;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+.line-note{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
 }
 
-#page-landing .content-wrapper .left-content .info .description span {
-    height: 26px;
-    font-size: 20px;
+.line-note-last {
+  display: flex;
+  flex-direction: row;
 }
 
-#page-landing .content-wrapper .right-content{
-    z-index: 1;
-    position: absolute;
-    background: #fff;
-    width: 50%;
-    height: 100%;
+.detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
 
-    display: flex;
-    flex-direction: column;
-    right: 0px;
-    justify-content: center;
-    align-items: center;
-} 
-
-#page-landing .content-wrapper .right-content .info{
-    width: 430px;
-    height: 590px;
+  color: #0F1419;
 }
 
-#page-landing .content-wrapper .right-content .info .main{
-    font-size: 30px;
-    margin-bottom: 50px;
+.right-content {
+
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
 }
 
-#page-landing .content-wrapper .right-content .info .main span {
-  width: 597px;
-  height: 120px;
+.r-content-wrapper{
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
 }
 
-#page-landing .content-wrapper .right-content .info .secundary{
-    font-size: 15px;
-    margin-bottom: 15px;
+.r-content-wrapper img{
+  width: 80px;
+  height: 70px;
 }
 
-#page-landing .content-wrapper .right-content .info .buttons{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
+.description-main{
+  color: #0F1419;
+  font-size: 24px;
+
+  margin: 20px 0 0;
 }
 
-#page-landing .content-wrapper .right-content .info .buttons .button-link{
-    text-decoration: none;
+.description-sub{
+  color: #0F1419;
+  font-size: 15px;
+  margin: 64px 0 16px;
 }
 
-
-#page-landing .content-wrapper .right-content .info .buttons .button-sign-up{
-    margin-bottom: 10px;
-    display: flex;
-    width: 350px;
-    height: 45px;
-    background: #42078E;
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-
-    transition: background-color 0.2s;
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#page-landing .content-wrapper .right-content .info .buttons .button-sign-up:hover{
-    background: #8338e6;
+.buttons a{
+  margin: 0 0 16px;
+  padding: 0px 32px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  text-decoration: none;
 }
 
-#page-landing .content-wrapper .right-content .info .buttons .button-login{
-    display: flex;
-    width: 350px;
-    height: 45px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    color: #42078E;
-    border: 1px solid #42078E;
+.sign-up{
+  width: 100%;
+  color: #fff;
+  background-color: #42078E;
 
-    transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
-#page-landing .content-wrapper .right-content .info .buttons .button-login:hover{
-    background: #d0bce9;
+.sign-up:hover{
+  background: #6a25c4;
+}
+
+.text-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+}
+
+.login{
+  border: 2px solid #42078E;
+  width: 100%;
+  color: #42078E;
+
+  transition: background-color 0.2s;
+}
+
+.login:hover{
+  background: #d9c8e9;
 }
