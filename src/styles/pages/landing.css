@@ -77,6 +77,11 @@
     margin-bottom: 50px;
 }
 
+#page-landing .content-wrapper .right-content .info .main span {
+  width: 597px;
+  height: 120px;
+}
+
 #page-landing .content-wrapper .right-content .info .secundary{
     font-size: 15px;
     margin-bottom: 15px;

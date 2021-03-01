@@ -1,25 +1,32 @@
-import React, { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { FormEvent, useState  } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import api from '../services/api'
 
 import logo from '../images/logo.svg'
 
 import '../styles/pages/register.css'
 
 function Register() {
+  const history = useHistory()
+
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    console.log({
-      name,
-      username,
-      email,
+    const data = {
+      name, 
+      username, 
+      email, 
       password
-    })
+    }
+
+    await api.post('register', data).then()
+
+    history.push('/')
   }
 
   return (

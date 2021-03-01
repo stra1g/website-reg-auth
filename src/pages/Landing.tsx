@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 
 import '../styles/pages/landing.css'
 
-import logo_caderno from '../images/logo-caderno.svg'
+//const logo_cadern = require('../images/logo-caderno.svg')
+
+//const logoCaderno = require('../images/logo-caderno.svg')
+
+import logo_caderno  from '../images/logo-caderno.svg' 
 import logo_productive from '../images/logo-productive.svg'
 import logo_seguranca from '../images/logo-seguranca.svg'
 import logo from '../images/logo.svg'
@@ -15,7 +19,7 @@ function Landing() {
         <div className="left-content">
           <div className="info">
             <div className="description">
-              <img src={logo_caderno} alt="logo_caderno" />
+              <img src={logo_caderno} alt=""/>
               <span>Save your notes</span>
             </div>
 
