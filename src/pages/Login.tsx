@@ -1,11 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { FormEvent, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import api from '../services/api'
 
 import logo from '../images/logo.svg'
+
 
 import '../styles/pages/login.css'
 
 function Login() {
+  const history = useHistory()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  async function handleSubmit(event: FormEvent){
+    event.preventDefault()
+
+    const data = {
+      email,
+      password
+    }
+
+    await api.post('login', data).then((response) => console.log(response))
+
+    history.push('/home')
+  }
+
   return (
     <div className="main">
       <div className="content">
@@ -16,7 +36,7 @@ function Login() {
           </div>
 
           <div className="info-form">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input-box">
                 <label htmlFor="">
                   <div className="label-form">
@@ -27,7 +47,12 @@ function Login() {
                     </div>
                     <div className="input-label">
                       <div className="input">
-                        <input type="text" name="email" />
+                        <input 
+                          type="text" 
+                          name="email" 
+                          value={email}
+                          onChange={event => setEmail(event.target.value)}
+                        />
                       </div>
                     </div>
                   </div>
@@ -44,7 +69,12 @@ function Login() {
                     </div>
                     <div className="input-label">
                       <div className="input">
-                        <input type="password" name="password" />
+                        <input 
+                          type="password" 
+                          name="password" 
+                          value={password}
+                          onChange={event => setPassword(event.target.value)}
+                        />
                       </div>
                     </div>
                   </div>
@@ -53,7 +83,7 @@ function Login() {
 
               <div className="button-box">
                 <button className="confirm-button" type="submit">
-                  Register
+                  Log In
                 </button>
               </div>
             </form>
