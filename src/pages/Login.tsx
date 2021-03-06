@@ -1,6 +1,7 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import api from '../services/api'
+
+import {AuthContext} from '../contexts/auth'
 
 import logo from '../images/logo.svg'
 
@@ -9,6 +10,7 @@ import '../styles/pages/login.css'
 
 function Login() {
   const history = useHistory()
+  const { signed, signIn } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -20,8 +22,8 @@ function Login() {
       email,
       password
     }
-
-    await api.post('login', data).then((response) => console.log(response))
+    
+    await signIn(data)
 
     history.push('/home')
   }
