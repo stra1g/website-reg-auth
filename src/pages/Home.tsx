@@ -4,7 +4,13 @@ import '../styles/pages/home.css'
 
 function Home(){
   return (
-    <h1>Hello world dude how are u doing</h1>
+    <div className="logout-content">
+      <h1>You are logged</h1>
+      <br/>
+      <button className="logout-button">
+        Logout
+      </button>
+    </div>
   )
 }
 
