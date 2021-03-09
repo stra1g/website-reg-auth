@@ -7,6 +7,7 @@ interface AuthContextData{
   signed: boolean;
   user: object | null;
   signIn(data:object): Promise<void>
+  signOut(): Promise<void>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -23,8 +24,17 @@ const AuthProvider: React.FC = ({children}) => {
     setUser(response.data.filteredUser)
   }
 
+  async function signOut(){
+    // just gonna work when sends the JWT in request
+    //const response = await api.post('/logout')
+    //console.log(response)
+
+    history.push('/')
+    setUser(null)
+  }
+
   return (
-    <AuthContext.Provider value={{signed: Boolean(user), user, signIn }}>
+    <AuthContext.Provider value={{signed: Boolean(user), user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )
