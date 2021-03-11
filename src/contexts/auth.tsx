@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react'
 import api from '../services/api'
+import Cookies from 'js-cookie'
 
 import history from '../utils/history'
 
@@ -18,7 +19,7 @@ const AuthProvider: React.FC = ({children}) => {
 
   async function signIn(data:object){
     
-    const response = await api.post('login', data)
+    const response = await api.post('login', data, { withCredentials: true })
 
     history.push('/home')
     setUser(response.data.filteredUser)
