@@ -1,4 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import api from '../services/api'
 
 import {AuthContext} from '../contexts/auth'
 
@@ -6,6 +8,16 @@ import '../styles/pages/home.css'
 
 function Home(){
   const { signOut } = useContext(AuthContext)
+
+  useEffect(() => {
+    async function test () {
+      const response = await api.get('testJWT')
+
+      console.log(response)
+    }
+
+    test()
+  }, [])
 
   function handleButtonClick(){
     signOut()
