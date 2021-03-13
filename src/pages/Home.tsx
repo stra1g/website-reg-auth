@@ -13,7 +13,7 @@ function Home(){
     async function test () {
       const response = await api.get('testJWT')
 
-      console.log(response)
+      console.log(response.data)
     }
 
     test()

@@ -1,6 +1,7 @@
 import React, { FormEvent, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
+import FormError from '../components/FormError'
 import {AuthContext} from '../contexts/auth'
 
 import logo from '../images/logo.svg'
@@ -8,7 +9,7 @@ import logo from '../images/logo.svg'
 import '../styles/pages/login.css'
 
 function Login() {
-  const { signed, signIn } = useContext(AuthContext)
+  const { signed, signIn, authError } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -86,6 +87,12 @@ function Login() {
               </div>
             </form>
           </div>
+
+          {authError &&
+            <div>
+              <FormError statusCode={authError}/>
+            </div>
+          }
 
           <div className="footer-form">
             <div className="footer-block">
