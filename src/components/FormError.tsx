@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../styles/components/formError.css'
+
 interface FormErrorProps{
   statusCode: number
 }
@@ -7,13 +9,13 @@ interface FormErrorProps{
 function FormError(props:FormErrorProps){
   switch(props.statusCode){
     case 401:
-      return <p>deu erro 401</p>
+      return <p>The email or password you entered doesn't belong to an account. Please check your credentials and try again</p>
       break
     case 422:
-      return <p>deu erro 422</p>
+      return <p>The email or password you entered doesn't have the correct type. Please check your credentials and try again</p>
       break
     default:
-      return <p>deu erro 500</p>
+      return <p>Some error occurred in the process. Please, try again later.</p>
   }
 }
 
