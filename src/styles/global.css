@@ -42,6 +42,7 @@ body, input, button, textarea {
   padding: 0 16px;
 
   display: flex;
+  max-width: 364px;
   flex-direction: column;
   
   position: absolute;
@@ -114,6 +115,13 @@ body, input, button, textarea {
   background: #6a25c4;
   cursor: pointer;
 }
+
+.error-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+} 
 
 .footer-form{
   display: flex;

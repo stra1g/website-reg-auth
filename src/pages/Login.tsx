@@ -89,7 +89,7 @@ function Login() {
           </div>
 
           {authError &&
-            <div>
+            <div className="error-content">
               <FormError statusCode={authError}/>
             </div>
           }
