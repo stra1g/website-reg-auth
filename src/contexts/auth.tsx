@@ -6,36 +6,47 @@ import history from '../utils/history'
 
 interface AuthContextData{
   signed: boolean;
-  user: object | null;
+  userId: number | undefined;
   signIn(data:object): Promise<void>
   signOut(): Promise<void>
+  authError: number | null
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 const AuthProvider: React.FC = ({children}) => {
-  
-  const [user, setUser] = useState<object | null>(null)
+  const currentUser = Cookies.get('c_usr') ? Number(Cookies.get('c_usr')) : undefined
+  const [authError, setAuthError] = useState<number | null>(null)
+  const [userId, setUserId] = useState<number | undefined>(currentUser)
 
   async function signIn(data:object){
-    
-    const response = await api.post('login', data, { withCredentials: true })
+    try {
+      const response = await api.post('login', data, { withCredentials: true })
+      
+      const { userId } = response.data
+      
+      Cookies.set('c_usr', String(userId))
 
-    history.push('/home')
-    setUser(response.data.filteredUser)
+      history.push('/home')
+      setAuthError(null)
+      setUserId(userId)
+    } catch(e){
+      setAuthError(e.response.data.statusCode)
+    }
   }
 
   async function signOut(){
     // just gonna work when sends the JWT in request
-    //const response = await api.post('/logout')
-    //console.log(response)
+    const response = await api.post('/logout')
+
+    Cookies.remove('c_usr')
 
     history.push('/')
-    setUser(null)
+    setUserId(undefined)
   }
 
   return (
-    <AuthContext.Provider value={{signed: Boolean(user), user, signIn, signOut }}>
+    <AuthContext.Provider value={{signed: Boolean(userId), userId, signIn, signOut, authError }}>
       {children}
     </AuthContext.Provider>
   )
