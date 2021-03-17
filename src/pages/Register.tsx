@@ -1,10 +1,32 @@
-import React, { FormEvent, useState  } from 'react'
+import React, { FormEvent, useState, ChangeEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
+
 import api from '../services/api'
+import { validateName } from '../utils/inputValidation'
 
 import logo from '../images/logo.svg'
 
 import '../styles/pages/register.css'
+
+interface Errors {
+  name: {
+    isValid: boolean,
+    message: string | null
+  }
+  username: {
+    isValid: boolean,
+    message: string | null
+  }
+  email:{
+    isValid: boolean,
+    message: string | null
+  }
+  password:{
+    isValid: boolean,
+    message: string | null
+  }
+}
 
 function Register() {
   const history = useHistory()
@@ -13,6 +35,19 @@ function Register() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState<Errors>({} as Errors)
+
+  function handleNameChange(event: ChangeEvent<HTMLInputElement>){
+    const { value } = event.target
+    const { name } = event.target
+
+    setName(value)
+
+    const { isValid, message } = validateName(value)
+    
+    const newErrors = {...errors, [name]: {isValid, message}}
+    setErrors(newErrors) 
+  }
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
@@ -54,9 +89,17 @@ function Register() {
                           type="text"
                           name="name"
                           value={name}
-                          onChange={event => setName(event.target.value)}
+                          onChange={handleNameChange}
                         />
+                        <div className="error-icon-box">
+                          { name !== '' &&  
+                            <span>
+                              { errors.name.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
+                            </span>
+                          }     
+                        </div>
                       </div>
+                      
                     </div>
                   </div>
                 </label>
