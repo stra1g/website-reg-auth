@@ -42,24 +42,24 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    setName(value)
-
     const { isValid, message } = validateName(value)
     
     const newErrors = {...errors, [name]: {isValid, message}}
+    
     setErrors(newErrors) 
+    setName(value)
   }
 
-  function handleUsernameChange(event: ChangeEvent<HTMLInputElement>){
+  async function handleUsernameChange(event: ChangeEvent<HTMLInputElement>){
     const { value } = event.target
     const { name } = event.target
 
-    setUsername(value)
+    const { isValid, message } = await validateUsername(value)
 
-    const { isValid, message } = validateUsername(value)
-    
     const newErrors = {...errors, [name]: {isValid, message}}
+    
     setErrors(newErrors)
+    setUsername(value)
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -137,9 +137,9 @@ function Register() {
                         <div className="error-icon-box">
                           { username !== '' &&  
                             <span>
-                              { errors.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
+                              { errors.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
-                          }     
+                          }       
                         </div>
                       </div>
                     </div>
