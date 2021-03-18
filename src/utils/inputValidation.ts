@@ -14,10 +14,10 @@ export function validateName (name: string){
 }
 
 export async function validateUsername (username:string){
-  if (username.length < 4){
+  if (username.length < 4 || username.includes(' ')){
     return {
       isValid: false,
-      message: 'Insert at least a username with 4 characters'
+      message: 'Insert at least a username with 4 characters and without spaces'
     }
   }
   const response = await api.get(`register/checkUsername?username=${username}`)
