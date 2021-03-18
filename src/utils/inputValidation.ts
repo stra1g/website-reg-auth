@@ -73,3 +73,46 @@ export async function validateEmail(email:string){
     message: null
   }
 }
+
+export function validatePassword(password:string){
+  const uppercaseLetters = /[A-Z]/;
+  const lowercaseLetters = /[a-z]/; 
+  const numbers = /[0-9]/;
+  const especialCharacters = /[!|@|#|$|%|^|&|*|(|)|-|_]/;
+
+  if (password.length < 6){
+    return {
+      isValid: false,
+      message: 'Your password must contain at least 6 characters including an uppercase letter, simbols and numbers'
+    }
+  }
+
+  var containsUppercaseLetter;
+  var containsLowercaseLetter;
+  var containsNumber;
+  var containsEspecialCharacter;
+
+  for (let i = 0; i < password.length; i++){
+    if (uppercaseLetters.test(password[i])){
+      containsUppercaseLetter = true
+    } else if (lowercaseLetters.test(password[i])){
+      containsLowercaseLetter = true
+    } else if (numbers.test(password[i])){
+      containsNumber = true
+    } else if (especialCharacters.test(password[i])){
+      containsEspecialCharacter = true;
+    }
+  }
+  
+  if (!containsUppercaseLetter || !containsLowercaseLetter || !containsNumber || !containsEspecialCharacter){
+    return {
+      isValid: false,
+      message: 'Your password must contain at least 6 characters including an uppercase and a lowercase letter, simbols and numbers'
+    }
+  }
+
+  return {
+    isValid: true,
+    message: null
+  }
+} 

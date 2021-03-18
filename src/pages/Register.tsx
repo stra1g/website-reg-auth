@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
 import api from '../services/api'
-import { validateName, validateUsername, validateEmail } from '../utils/inputValidation'
+import { validateName, validateUsername, validateEmail, validatePassword } from '../utils/inputValidation'
 
 import logo from '../images/logo.svg'
 
@@ -71,6 +71,16 @@ function Register() {
     const newErrors = {...errors, [name]: {isValid, message}}
     setErrors(newErrors)
     setEmail(value)
+  }
+
+  async function handlePasswordChange(event: ChangeEvent<HTMLInputElement>){
+    const { value } = event.target
+    const { name } = event.target
+
+    const { isValid, message } = validatePassword(value)
+    const newErrors = {...errors, [name]: {isValid, message}}
+    setErrors(newErrors)
+    setPassword(value)
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -201,8 +211,15 @@ function Register() {
                           type="password"
                           name="password"
                           value={password}
-                          onChange={event => setPassword(event.target.value)}
+                          onChange={handlePasswordChange}
                         />
+                        <div className="error-icon-box">
+                          { password !== '' &&  
+                            <span>
+                              { errors.password.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                            </span>
+                          }       
+                        </div>
                       </div>
                     </div>
                   </div>
