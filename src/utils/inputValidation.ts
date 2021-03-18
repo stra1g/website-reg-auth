@@ -10,3 +10,16 @@ export const validateName = (name: string) => {
     message: null
   }
 }
+
+export const validateUsername = (username:string) => {
+  if (username.length < 4){
+    return {
+      isValid: false,
+      message: 'Insert at least a username with 4 characters'
+    }
+  }
+  return {
+    isValid: true,
+    message: null
+  }
+}
