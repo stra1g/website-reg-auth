@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, ChangeEvent } from 'react'
+import React, { FormEvent, useState, ChangeEvent, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
@@ -8,20 +8,23 @@ import { validateName, validateUsername, validateEmail, validatePassword } from 
 import logo from '../images/logo.svg'
 
 import '../styles/pages/register.css'
-import { error } from 'console'
 
-interface Errors {
+interface ValidInput {
   name: {
+    isValid: boolean,
     message: string
   }
   username: {
-    message: string | null
+    isValid: boolean,
+    message: string 
   }
   email:{
-    message: string | null
+    isValid: boolean,
+    message: string 
   }
   password:{
-    message: string | null
+    isValid: boolean,
+    message: string 
   }
 }
 
@@ -32,18 +35,17 @@ function Register() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState<Errors>({} as Errors)
+  const [validInput, setValidInput] = useState<ValidInput>({} as ValidInput)
 
   function handleNameChange(event: ChangeEvent<HTMLInputElement>){
     const { value } = event.target
     const { name } = event.target
 
-    const { message } = validateName(value)
+    const { isValid, message } = validateName(value)
+    
+    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    setValidInput(newValidInputs) 
 
-    if (message){
-      const newErrors = {...errors, [name]: {message}}
-      setErrors(newErrors) 
-    }
     setName(value)
   }
 
@@ -51,12 +53,11 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    const { message } = await validateUsername(value)
+    const { isValid, message } = await validateUsername(value)
 
-    if (message){
-      const newErrors = {...errors, [name]: {message}}
-      setErrors(newErrors) 
-    }
+    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    setValidInput(newValidInputs)
+
     setUsername(value)
   }
 
@@ -64,12 +65,11 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
     
-    const { message } = await validateEmail(value)
+    const { isValid, message } = await validateEmail(value)
 
-    if (message){
-      const newErrors = {...errors, [name]: {message}}
-      setErrors(newErrors) 
-    }
+    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    setValidInput(newValidInputs)
+
     setEmail(value)
   }
 
@@ -77,13 +77,28 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    const { message } = validatePassword(value)
+    const { isValid, message } = validatePassword(value)
 
-    if (message){
-      const newErrors = {...errors, [name]: {message}}
-      setErrors(newErrors) 
-    }
+    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    setValidInput(newValidInputs)
+
     setPassword(value)
+  }
+
+  function activeButton(){
+    
+    if (!name || !username || !email || !password){
+      return true
+    } 
+
+    if (!validInput.name.isValid ||
+        !validInput.username.isValid ||
+        !validInput.email.isValid ||
+        !validInput.password.isValid
+      ){
+        return true
+      }
+    return false
   }
 
   async function handleSubmit(event: FormEvent) {
@@ -131,7 +146,7 @@ function Register() {
                         <div className="error-icon-box">
                           { name !== '' &&  
                             <span>
-                              { errors.name ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
+                              { validInput.name.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
                             </span>
                           }     
                         </div>
@@ -161,7 +176,7 @@ function Register() {
                         <div className="error-icon-box">
                           { username !== '' &&  
                             <span>
-                              { errors.username ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { validInput.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
@@ -190,7 +205,7 @@ function Register() {
                         <div className="error-icon-box">
                           { email !== '' &&  
                             <span>
-                              { errors.email ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { validInput.email.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
@@ -219,7 +234,7 @@ function Register() {
                         <div className="error-icon-box">
                           { password !== '' &&  
                             <span>
-                              { errors.password ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { validInput.password.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
@@ -230,7 +245,7 @@ function Register() {
               </div>
 
               <div className="button-box">
-                <button className="confirm-button" type="submit">
+                <button className="confirm-button" id="confirm-button" type="submit" disabled={activeButton()}>
                   Register
                 </button>
               </div>
