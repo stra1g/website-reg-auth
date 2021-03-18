@@ -1,7 +1,7 @@
 import api from '../services/api'
 
 export function validateName (name: string){
-  if (name.length < 2){
+  if (name.length < 2 || !name.trim()){
     return {
       isValid: false,
       message: 'Invalid name'
