@@ -58,6 +58,16 @@ export async function validateEmail(email:string){
     }
   }
 
+  const response = await api.get(`register/checkEmail?email=${email}`)
+  const emailAlreadyExists = response.data.userExists
+
+  if (emailAlreadyExists){
+    return {
+      isValid: false, 
+      message: 'Email already taken'
+    }
+  }
+
   return {
     isValid: true,
     message: null
