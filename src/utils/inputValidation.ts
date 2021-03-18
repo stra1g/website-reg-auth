@@ -3,12 +3,10 @@ import api from '../services/api'
 export function validateName (name: string){
   if (name.length < 2 || !name.trim()){
     return {
-      isValid: false,
       message: 'Invalid name'
     }
   }
   return {
-    isValid: true,
     message: null
   }
 }
@@ -16,7 +14,6 @@ export function validateName (name: string){
 export async function validateUsername (username:string){
   if (username.length < 4 || username.includes(' ')){
     return {
-      isValid: false,
       message: 'Insert at least a username with 4 characters and without spaces'
     }
   }
@@ -25,13 +22,11 @@ export async function validateUsername (username:string){
 
   if (usernameAlreadyExists){
     return {
-      isValid: false,
       message: 'Username already exists'
     }
   }
 
   return {
-    isValid: true,
     message: null
   }
 }
@@ -53,7 +48,6 @@ export async function validateEmail(email:string){
       dominio.indexOf('.') == dominio.length - 1
     ){
     return {
-      isValid: false, 
       message: 'Insert a valid email'
     }
   }
@@ -63,13 +57,11 @@ export async function validateEmail(email:string){
 
   if (emailAlreadyExists){
     return {
-      isValid: false, 
       message: 'Email already taken'
     }
   }
 
   return {
-    isValid: true,
     message: null
   }
 }
@@ -82,7 +74,6 @@ export function validatePassword(password:string){
 
   if (password.length < 6){
     return {
-      isValid: false,
       message: 'Your password must contain at least 6 characters including an uppercase letter, simbols and numbers'
     }
   }
@@ -106,13 +97,11 @@ export function validatePassword(password:string){
   
   if (!containsUppercaseLetter || !containsLowercaseLetter || !containsNumber || !containsEspecialCharacter){
     return {
-      isValid: false,
       message: 'Your password must contain at least 6 characters including an uppercase and a lowercase letter, simbols and numbers'
     }
   }
 
   return {
-    isValid: true,
     message: null
   }
 } 

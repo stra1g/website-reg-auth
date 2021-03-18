@@ -12,19 +12,15 @@ import { error } from 'console'
 
 interface Errors {
   name: {
-    isValid: boolean,
-    message: string | null
+    message: string
   }
   username: {
-    isValid: boolean,
     message: string | null
   }
   email:{
-    isValid: boolean,
     message: string | null
   }
   password:{
-    isValid: boolean,
     message: string | null
   }
 }
@@ -42,11 +38,12 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    const { isValid, message } = validateName(value)
-    
-    const newErrors = {...errors, [name]: {isValid, message}}
-    
-    setErrors(newErrors) 
+    const { message } = validateName(value)
+
+    if (message){
+      const newErrors = {...errors, [name]: {message}}
+      setErrors(newErrors) 
+    }
     setName(value)
   }
 
@@ -54,11 +51,12 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    const { isValid, message } = await validateUsername(value)
+    const { message } = await validateUsername(value)
 
-    const newErrors = {...errors, [name]: {isValid, message}}
-    
-    setErrors(newErrors)
+    if (message){
+      const newErrors = {...errors, [name]: {message}}
+      setErrors(newErrors) 
+    }
     setUsername(value)
   }
 
@@ -66,10 +64,12 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
     
-    const { isValid, message } = await validateEmail(value)
+    const { message } = await validateEmail(value)
 
-    const newErrors = {...errors, [name]: {isValid, message}}
-    setErrors(newErrors)
+    if (message){
+      const newErrors = {...errors, [name]: {message}}
+      setErrors(newErrors) 
+    }
     setEmail(value)
   }
 
@@ -77,9 +77,12 @@ function Register() {
     const { value } = event.target
     const { name } = event.target
 
-    const { isValid, message } = validatePassword(value)
-    const newErrors = {...errors, [name]: {isValid, message}}
-    setErrors(newErrors)
+    const { message } = validatePassword(value)
+
+    if (message){
+      const newErrors = {...errors, [name]: {message}}
+      setErrors(newErrors) 
+    }
     setPassword(value)
   }
 
@@ -128,7 +131,7 @@ function Register() {
                         <div className="error-icon-box">
                           { name !== '' &&  
                             <span>
-                              { errors.name.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
+                              { errors.name ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
                             </span>
                           }     
                         </div>
@@ -158,7 +161,7 @@ function Register() {
                         <div className="error-icon-box">
                           { username !== '' &&  
                             <span>
-                              { errors.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { errors.username ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
@@ -187,7 +190,7 @@ function Register() {
                         <div className="error-icon-box">
                           { email !== '' &&  
                             <span>
-                              { errors.email.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { errors.email ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
@@ -216,7 +219,7 @@ function Register() {
                         <div className="error-icon-box">
                           { password !== '' &&  
                             <span>
-                              { errors.password.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
+                              { errors.password ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
                         </div>
