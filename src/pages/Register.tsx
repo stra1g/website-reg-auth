@@ -142,6 +142,7 @@ function Register() {
                           name="name"
                           value={name}
                           onChange={handleNameChange}
+                          autoComplete="off"
                         />
                         <div className="error-icon-box">
                           { name !== '' &&  
@@ -151,7 +152,11 @@ function Register() {
                           }     
                         </div>
                       </div>
-                      
+                      { name !== '' && !validInput.name.isValid &&
+                        <div className="ballon-error">                        
+                            <span>{validInput.name.message}</span>
+                        </div>
+                      }              
                     </div>
                   </div>
                 </label>
@@ -172,6 +177,7 @@ function Register() {
                           name="username"
                           value={username}
                           onChange={handleUsernameChange}
+                          autoComplete="off"
                         />
                         <div className="error-icon-box">
                           { username !== '' &&  
@@ -179,8 +185,13 @@ function Register() {
                               { validInput.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
                             </span>
                           }       
-                        </div>
+                        </div>  
                       </div>
+                      { username !== '' && !validInput.username.isValid &&
+                        <div className="ballon-error">                        
+                          <span>{validInput.username.message}</span>
+                        </div>
+                      }                       
                     </div>
                   </div>
                 </label>
@@ -201,6 +212,7 @@ function Register() {
                           name="email"
                           value={email}
                           onChange={handleEmailChange}
+                          autoComplete="off"
                         />
                         <div className="error-icon-box">
                           { email !== '' &&  
@@ -210,6 +222,11 @@ function Register() {
                           }       
                         </div>
                       </div>
+                      { email !== '' && !validInput.email.isValid &&
+                        <div className="ballon-error">                        
+                            <span>{validInput.email.message}</span>
+                        </div>
+                      } 
                     </div>
                   </div>
                 </label>
@@ -230,6 +247,7 @@ function Register() {
                           name="password"
                           value={password}
                           onChange={handlePasswordChange}
+                          autoComplete="off"
                         />
                         <div className="error-icon-box">
                           { password !== '' &&  
@@ -239,6 +257,11 @@ function Register() {
                           }       
                         </div>
                       </div>
+                      { password !== '' && !validInput.password.isValid &&
+                        <div className="ballon-error">                        
+                            <span>{validInput.password.message}</span>
+                        </div>
+                      } 
                     </div>
                   </div>
                 </label>

@@ -67,6 +67,10 @@ body, input, button, textarea {
   flex-direction: row;
 }
 
+.input-label {
+  position: relative;
+}
+
 .error-icon-box{
   display: flex;
   z-index: 10;
@@ -78,6 +82,7 @@ body, input, button, textarea {
 }
 
 .input-box{
+  position: relative;
   padding: 12px 16px;
 }
 
