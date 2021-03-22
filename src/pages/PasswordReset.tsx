@@ -1,12 +1,9 @@
 import React, { FormEvent, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import FormError from '../components/FormError'
-import {AuthContext} from '../contexts/auth'
-
 import logo from '../images/logo.svg'
 
-import '../styles/pages/login.css'
+import '../styles/pages/passwordReset.css'
 
 function PasswordReset() {
 
