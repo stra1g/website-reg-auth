@@ -96,9 +96,11 @@ function Login() {
 
           <div className="footer-form">
             <div className="footer-block">
-              <span>Forgot password?</span>
+              <Link to="/password-reset" className="footer-link">
+                <span>Forgot password?</span>
+              </Link>
               <span className="footer-divider">.</span>
-              <Link to="/register" className="sign-up-link">
+              <Link to="/register" className="footer-link">
                 <span>Sign up to app</span>
               </Link>
             </div>

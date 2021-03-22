@@ -2,13 +2,13 @@
   margin: 0 5px;
 }
 
-.sign-up-link{
+.footer-link{
   text-decoration: none;
   color: #42078E;
 
   transition: color 0.2s;
 }
 
-.footer-form .footer-block .sign-up-link:hover {
+.footer-form .footer-block .footer-link:hover {
   color: #8338e6;
 }
