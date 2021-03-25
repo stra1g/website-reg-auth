@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useContext, ChangeEvent } from 'react'
+import React, { FormEvent, useState, useContext, ChangeEvent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { validatePassword, validateConfirmPassword } from '../utils/inputValidation'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
@@ -7,16 +7,16 @@ import {AuthContext} from '../contexts/auth'
 
 import logo from '../images/logo.svg'
 
-import '../styles/pages/login.css'
+import '../styles/pages/passwordUpdate.css'
 
 interface ValidInput{
   password: {
     isValid: boolean,
-    message: string
+    message: string | null
   }
   confirmPassword: {
     isValid: boolean,
-    message: string
+    message: string | null
   }
 }
 
@@ -27,17 +27,12 @@ function PasswordUpdate() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [validInput, setValidInput] = useState<ValidInput>({} as ValidInput)
 
-  async function handlePasswordChange(event: ChangeEvent<HTMLInputElement>){
-    const { value } = event.target
-    const { name } = event.target
+  useEffect(() => {
+    const { isValid, message } = validateConfirmPassword(confirmPassword, password)
 
-    const { isValid, message } = validatePassword(value)
-
-    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    const newValidInputs = {...validInput, 'confirmPassword': {isValid, message}}
     setValidInput(newValidInputs)
-
-    setPassword(value)
-  }
+  }, [password])
 
   async function handleConfirmPasswordChange(event: ChangeEvent<HTMLInputElement>){
     const { value } = event.target
@@ -49,6 +44,18 @@ function PasswordUpdate() {
     setValidInput(newValidInputs)
 
     setConfirmPassword(value)
+  }
+
+  async function handlePasswordChange(event: ChangeEvent<HTMLInputElement>){
+    const { value } = event.target
+    const { name } = event.target
+
+    const { isValid, message } = validatePassword(value)
+
+    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    setValidInput(newValidInputs)
+
+    setPassword(value)
   }
 
   function activeButton(){
