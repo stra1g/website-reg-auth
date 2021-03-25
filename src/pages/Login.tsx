@@ -96,7 +96,7 @@ function Login() {
 
           <div className="footer-form">
             <div className="footer-block">
-              <Link to="/password-reset" className="footer-link">
+              <Link to="/password-sendLink" className="footer-link">
                 <span>Forgot password?</span>
               </Link>
               <span className="footer-divider">.</span>
