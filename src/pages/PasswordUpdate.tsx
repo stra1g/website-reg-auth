@@ -1,9 +1,9 @@
 import React, { FormEvent, useState, useContext, ChangeEvent, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 import { validatePassword, validateConfirmPassword } from '../utils/inputValidation'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
-
-import {AuthContext} from '../contexts/auth'
+import * as queryString from 'query-string'
+import api from '../services/api'
 
 import logo from '../images/logo.svg'
 
@@ -20,9 +20,7 @@ interface ValidInput{
   }
 }
 
-function PasswordUpdate() {
-  const { signed, signIn, authError } = useContext(AuthContext)
-
+function PasswordUpdate(props: RouteComponentProps) {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [validInput, setValidInput] = useState<ValidInput>({} as ValidInput)
@@ -76,8 +74,12 @@ function PasswordUpdate() {
     const data = {
       password
     }
+
+    const { token, user_id } = queryString.parse(props.location.search)
     
-    await signIn(data)
+    const link = `update-password?token=${token}&user_id=${user_id}`
+
+    await api.put(link, data)
   }
 
   return (

@@ -116,3 +116,16 @@ export function validatePassword(password:string){
     message: null
   }
 } 
+
+export function validateConfirmPassword(password: string, passwordToConfirm: string){
+  if (password !== passwordToConfirm){
+    return {
+      isValid: false,
+      message: "Passwords does not match"
+    }
+  }
+  return {
+    isValid: true,
+    message: null
+  }
+}
