@@ -1,5 +1,7 @@
 import React, { FormEvent, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../services/api'
+import history from '../utils/history'
 
 import logo from '../images/logo.svg'
 
@@ -12,6 +14,9 @@ function PasswordReset() {
   async function handleSubmit(event: FormEvent){
     event.preventDefault()
 
+    await api.post('reset-password', {email})
+
+    history.push('/login')
   }
 
   return (
