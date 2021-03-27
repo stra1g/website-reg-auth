@@ -34,13 +34,14 @@ function Input(props: Props) {
                 onChange={props.onChange}
                 autoComplete="off"
               />
-              <div className="error-icon-box">
+              
                 { props.validData && props.value !== '' &&
+                <div className="error-icon-box">
                   <span>
                     {props.validData.isValid ? <FaCheckCircle color="#42078E" /> : <FaTimesCircle color="#ED4956" />}
                   </span>
+                </div>
                 }
-              </div>
             </div>
             { props.validData && props.value !== '' && !props.validData.isValid &&
               <div className="ballon-error">                        
