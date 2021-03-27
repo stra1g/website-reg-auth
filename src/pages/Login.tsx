@@ -1,10 +1,12 @@
 import React, { FormEvent, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import FormError from '../components/FormError'
+
 import {AuthContext} from '../contexts/auth'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
+import FormHeader from '../components/FormHeader'
+import FormError from '../components/FormError'
 
 import logo from '../images/logo.svg'
 
@@ -31,10 +33,7 @@ function Login() {
     <div className="main">
       <div className="content">
         <div className="form">
-          <div className="header-form">
-            <img src={logo} alt="logo" />
-            <h1><span>Log in to app</span></h1>
-          </div>
+          <FormHeader title="Log in to app"/>
 
           <div className="info-form">
             <form onSubmit={handleSubmit}>

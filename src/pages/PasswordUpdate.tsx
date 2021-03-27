@@ -1,12 +1,12 @@
 import React, { FormEvent, useState, useContext, ChangeEvent, useEffect } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { validatePassword, validateConfirmPassword } from '../utils/inputValidation'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import * as queryString from 'query-string'
 
 import api from '../services/api'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
+import FormHeader from '../components/FormHeader'
 
 import logo from '../images/logo.svg'
 
@@ -89,10 +89,8 @@ function PasswordUpdate(props: RouteComponentProps) {
     <div className="main">
       <div className="content">
         <div className="form">
-          <div className="header-form">
-            <img src={logo} alt="logo" />
-            <h1><span>Reset Password</span></h1>
-          </div>
+          <FormHeader title="Reset password"/>
+
           <div className="info-form">
             <form onSubmit={handleSubmit}>
               <Input

@@ -1,11 +1,11 @@
-import React, { FormEvent, useState, ChangeEvent, useEffect } from 'react'
+import React, { FormEvent, useState, ChangeEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
 import api from '../services/api'
 import { validateName, validateUsername, validateEmail, validatePassword } from '../utils/inputValidation'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
+import FormHeader from '../components/FormHeader'
 
 import logo from '../images/logo.svg'
 
@@ -122,10 +122,7 @@ function Register() {
     <div className="main">
       <div className="content">
         <div className="form">
-          <div className="header-form">
-            <img src={logo} alt="logo" />
-            <h1><span>Sign up to app</span></h1>
-          </div>
+          <FormHeader title="Sign up to app"/>
 
           <div className="info-form">
             <form onSubmit={handleSubmit} className="form-content">

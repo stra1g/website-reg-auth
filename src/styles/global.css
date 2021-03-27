@@ -49,18 +49,6 @@ body, input, button, textarea {
   top: 0;
 }
 
-.form .header-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form .header-form span {
-  font-size: 22px;
-  color: #000000; 
-}
-
 .error-content{
   display: flex;
   justify-content: center;

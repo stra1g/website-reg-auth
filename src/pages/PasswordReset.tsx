@@ -6,6 +6,7 @@ import history from '../utils/history'
 import logo from '../images/logo.svg'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
+import FormHeader from '../components/FormHeader'
 
 import '../styles/pages/passwordReset.css'
 
@@ -25,10 +26,7 @@ function PasswordReset() {
     <div className="main">
       <div className="content">
         <div className="form">
-          <div className="header-form">
-            <img src={logo} alt="logo" />
-            <h1><span>Reset Password</span></h1>
-          </div>
+          <FormHeader title="Reset Password"/>
 
           <div className="info-form">
             <form onSubmit={handleSubmit}>
