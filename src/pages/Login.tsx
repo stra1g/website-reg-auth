@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import FormError from '../components/FormError'
 import {AuthContext} from '../contexts/auth'
 import SubmitButton from '../components/SubmitButton'
+import Input from '../components/Input'
 
 import logo from '../images/logo.svg'
 
@@ -37,49 +38,21 @@ function Login() {
 
           <div className="info-form">
             <form onSubmit={handleSubmit}>
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Email</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input 
-                          type="text" 
-                          name="email" 
-                          value={email}
-                          onChange={event => setEmail(event.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input
+                label="Email"
+                type="text"
+                value={email}
+                name="email"
+                onChange={event => setEmail(event.target.value)}
+              />
 
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Password</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input 
-                          type="password" 
-                          name="password" 
-                          value={password}
-                          onChange={event => setPassword(event.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input
+                label="Password"
+                type="password"
+                value={password}
+                name="password"
+                onChange={event => setPassword(event.target.value)}
+              />
 
               <SubmitButton text="Log In"/>
             </form>

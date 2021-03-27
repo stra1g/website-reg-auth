@@ -1,0 +1,77 @@
+.input-box{
+  position: relative;
+  padding: 12px 16px;
+}
+
+.input-box span {
+  color: #000000;
+  font-size: 14px;
+}
+
+.input-box input {
+  padding: 5px;
+  height: 40px;
+  width: 300px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  font-size: 14px;
+}
+
+.input-box input:focus {
+  outline: none;
+  border: 2px solid #cba9ec;
+}
+
+.input-label {
+  position: relative;
+}
+
+.input{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.error-icon-box{
+  display: flex;
+  z-index: 10;
+  padding: 5px;
+
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+.ballon-error{
+  position: absolute;
+  background-color: #ecbbc1;
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.ballon-error:before {
+  content: '';
+
+  width: 0;
+  height: 0;
+
+  position: absolute;
+  left: 10px;
+  top: -10px;
+
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #ecbbc1;
+
+  border-radius: 50%;
+}
+
+.ballon-error span {
+  font-size: 12px;
+  color: #e82042;
+}

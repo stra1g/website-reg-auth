@@ -6,6 +6,7 @@ import * as queryString from 'query-string'
 
 import api from '../services/api'
 import SubmitButton from '../components/SubmitButton'
+import Input from '../components/Input'
 
 import logo from '../images/logo.svg'
 
@@ -94,79 +95,23 @@ function PasswordUpdate(props: RouteComponentProps) {
           </div>
           <div className="info-form">
             <form onSubmit={handleSubmit}>
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Password</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input 
-                          type="password" 
-                          name="password" 
-                          value={password}
-                          onChange={handlePasswordChange}
-                        />
-                        <div className="error-icon-box">
-                          { password !== '' &&  
-                            <span>
-                              { validInput.password.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
-                            </span>
-                          }       
-                        </div>
-                      </div>
-                      { password !== '' && !validInput.password.isValid &&
-                        <div className="ballon-error">                        
-                            <span>{validInput.password.message}</span>
-                        </div>
-                      } 
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input
+                label="Password"
+                type="password"
+                value={password}
+                name="password"
+                onChange={handlePasswordChange}
+                validData={validInput.password}
+              />
 
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Confirm Password</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input 
-                          type="password" 
-                          name="confirmPassword" 
-                          value={confirmPassword}
-                          onChange={handleConfirmPasswordChange}
-                        />
-                        <div className="error-icon-box">
-                          { confirmPassword !== '' &&  
-                            <span>
-                              { validInput.confirmPassword.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
-                            </span>
-                          }       
-                        </div>
-                      </div>
-                      { confirmPassword !== '' && !validInput.confirmPassword.isValid &&
-                        <div className="ballon-error">                        
-                            <span>{validInput.confirmPassword.message}</span>
-                        </div>
-                      } 
-                    </div>
-                  </div>
-                </label>
-              </div>
-
-              {/* <div className="button-box">
-                <button className="confirm-button" type="submit" disabled={activeButton()}>
-                  Update Password
-                </button>
-              </div> */}
+              <Input
+                label="Confirm Password"
+                type="password"
+                value={confirmPassword}
+                name="confirmPassword"
+                onChange={handleConfirmPasswordChange}
+                validData={validInput.confirmPassword}
+              />
 
               <SubmitButton text="Update Password" disabled={activeButton()}/>
             </form>

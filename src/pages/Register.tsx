@@ -5,6 +5,7 @@ import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import api from '../services/api'
 import { validateName, validateUsername, validateEmail, validatePassword } from '../utils/inputValidation'
 import SubmitButton from '../components/SubmitButton'
+import Input from '../components/Input'
 
 import logo from '../images/logo.svg'
 
@@ -17,15 +18,15 @@ interface ValidInput {
   }
   username: {
     isValid: boolean,
-    message: string 
+    message: string
   }
-  email:{
+  email: {
     isValid: boolean,
-    message: string 
+    message: string
   }
-  password:{
+  password: {
     isValid: boolean,
-    message: string 
+    message: string
   }
 }
 
@@ -38,67 +39,67 @@ function Register() {
   const [password, setPassword] = useState('')
   const [validInput, setValidInput] = useState<ValidInput>({} as ValidInput)
 
-  function handleNameChange(event: ChangeEvent<HTMLInputElement>){
+  function handleNameChange(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.target
     const { name } = event.target
 
     const { isValid, message } = validateName(value)
-    
-    const newValidInputs = {...validInput, [name]: {isValid, message}}
-    setValidInput(newValidInputs) 
+
+    const newValidInputs = { ...validInput, [name]: { isValid, message } }
+    setValidInput(newValidInputs)
 
     setName(value)
   }
 
-  async function handleUsernameChange(event: ChangeEvent<HTMLInputElement>){
+  async function handleUsernameChange(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.target
     const { name } = event.target
 
     const { isValid, message } = await validateUsername(value)
 
-    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    const newValidInputs = { ...validInput, [name]: { isValid, message } }
     setValidInput(newValidInputs)
 
     setUsername(value)
   }
 
-  async function handleEmailChange(event: ChangeEvent<HTMLInputElement>){
+  async function handleEmailChange(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.target
     const { name } = event.target
-    
+
     const { isValid, message } = await validateEmail(value)
 
-    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    const newValidInputs = { ...validInput, [name]: { isValid, message } }
     setValidInput(newValidInputs)
 
     setEmail(value)
   }
 
-  async function handlePasswordChange(event: ChangeEvent<HTMLInputElement>){
+  async function handlePasswordChange(event: ChangeEvent<HTMLInputElement>) {
     const { value } = event.target
     const { name } = event.target
 
     const { isValid, message } = validatePassword(value)
 
-    const newValidInputs = {...validInput, [name]: {isValid, message}}
+    const newValidInputs = { ...validInput, [name]: { isValid, message } }
     setValidInput(newValidInputs)
 
     setPassword(value)
   }
 
-  function activeButton(){
-    
-    if (!name || !username || !email || !password){
+  function activeButton() {
+
+    if (!name || !username || !email || !password) {
       return true
-    } 
+    }
 
     if (!validInput.name.isValid ||
-        !validInput.username.isValid ||
-        !validInput.email.isValid ||
-        !validInput.password.isValid
-      ){
-        return true
-      }
+      !validInput.username.isValid ||
+      !validInput.email.isValid ||
+      !validInput.password.isValid
+    ) {
+      return true
+    }
     return false
   }
 
@@ -106,9 +107,9 @@ function Register() {
     event.preventDefault()
 
     const data = {
-      name, 
-      username, 
-      email, 
+      name,
+      username,
+      email,
       password
     }
 
@@ -127,148 +128,44 @@ function Register() {
           </div>
 
           <div className="info-form">
-            <form onSubmit={handleSubmit}>
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Name</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input
-                          type="text"
-                          name="name"
-                          value={name}
-                          onChange={handleNameChange}
-                          autoComplete="off"
-                        />
-                        <div className="error-icon-box">
-                          { name !== '' &&  
-                            <span>
-                              { validInput.name.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/>}
-                            </span>
-                          }     
-                        </div>
-                      </div>
-                      { name !== '' && !validInput.name.isValid &&
-                        <div className="ballon-error">                        
-                            <span>{validInput.name.message}</span>
-                        </div>
-                      }              
-                    </div>
-                  </div>
-                </label>
-              </div>
+            <form onSubmit={handleSubmit} className="form-content">
+              <Input 
+              label="Name"
+              type="text"
+              value={name}
+              name="name"
+              onChange={handleNameChange}
+              validData={validInput.name}
+              />
 
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Username</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input
-                          type="text"
-                          name="username"
-                          value={username}
-                          onChange={handleUsernameChange}
-                          autoComplete="off"
-                        />
-                        <div className="error-icon-box">
-                          { username !== '' &&  
-                            <span>
-                              { validInput.username.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
-                            </span>
-                          }       
-                        </div>  
-                      </div>
-                      { username !== '' && !validInput.username.isValid &&
-                        <div className="ballon-error">                        
-                          <span>{validInput.username.message}</span>
-                        </div>
-                      }                       
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input 
+              label="Username"
+              type="text"
+              value={username}
+              name="username"
+              onChange={handleUsernameChange}
+              validData={validInput.username}
+              />
 
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Email</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input
-                          type="text"
-                          name="email"
-                          value={email}
-                          onChange={handleEmailChange}
-                          autoComplete="off"
-                        />
-                        <div className="error-icon-box">
-                          { email !== '' &&  
-                            <span>
-                              { validInput.email.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
-                            </span>
-                          }       
-                        </div>
-                      </div>
-                      { email !== '' && !validInput.email.isValid &&
-                        <div className="ballon-error">                        
-                            <span>{validInput.email.message}</span>
-                        </div>
-                      } 
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input
+                label="Email"
+                type="text"
+                value={email}
+                name="email"
+                onChange={handleEmailChange}
+                validData={validInput.email}
+              />
 
-              <div className="input-box">
-                <label htmlFor="">
-                  <div className="label-form">
-                    <div className="text-label">
-                      <div className="text">
-                        <span>Password</span>
-                      </div>
-                    </div>
-                    <div className="input-label">
-                      <div className="input">
-                        <input
-                          type="password"
-                          name="password"
-                          value={password}
-                          onChange={handlePasswordChange}
-                          autoComplete="off"
-                        />
-                        <div className="error-icon-box">
-                          { password !== '' &&  
-                            <span>
-                              { validInput.password.isValid ? <FaCheckCircle color="#42078E"/> : <FaTimesCircle color="#ED4956"/> }
-                            </span>
-                          }       
-                        </div>
-                      </div>
-                      { password !== '' && !validInput.password.isValid &&
-                        <div className="ballon-error">                        
-                            <span>{validInput.password.message}</span>
-                        </div>
-                      } 
-                    </div>
-                  </div>
-                </label>
-              </div>
+              <Input
+                label="Password"
+                type="password"
+                value={password}
+                name="password"
+                onChange={handlePasswordChange}
+                validData={validInput.password}
+              />
 
-              <SubmitButton text="Register" disabled={activeButton()}/>
+              <SubmitButton text="Register" disabled={activeButton()} />
 
             </form>
           </div>
