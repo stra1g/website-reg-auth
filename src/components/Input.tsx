@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import InputIcon from './InputIcon'
 
 import '../styles/components/input.css'
 
@@ -36,11 +36,7 @@ function Input(props: Props) {
               />
               
                 { props.validData && props.value !== '' &&
-                <div className="error-icon-box">
-                  <span>
-                    {props.validData.isValid ? <FaCheckCircle color="#42078E" /> : <FaTimesCircle color="#ED4956" />}
-                  </span>
-                </div>
+                  <InputIcon isValid={props.validData.isValid}/>
                 }
             </div>
             { props.validData && props.value !== '' && !props.validData.isValid &&
