@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom'
 
 import api from '../services/api'
 import { validateName, validateUsername, validateEmail, validatePassword } from '../utils/inputValidation'
+
+import FormBackground from '../components/FormBackground'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
 import FormHeader from '../components/FormHeader'
@@ -117,66 +119,61 @@ function Register() {
   }
 
   return (
-    <div className="main">
-      <div className="content">
-        <div className="form">
-          <FormHeader title="Sign up to app"/>
+    <FormBackground>
+      <FormHeader title="Sign up to app" />
 
-          <div className="info-form">
-            <form onSubmit={handleSubmit} className="form-content">
-              <Input 
-              label="Name"
-              type="text"
-              value={name}
-              name="name"
-              onChange={handleNameChange}
-              validData={validInput.name}
-              />
+      <div className="info-form">
+        <form onSubmit={handleSubmit} className="form-content">
+          <Input
+            label="Name"
+            type="text"
+            value={name}
+            name="name"
+            onChange={handleNameChange}
+            validData={validInput.name}
+          />
 
-              <Input 
-              label="Username"
-              type="text"
-              value={username}
-              name="username"
-              onChange={handleUsernameChange}
-              validData={validInput.username}
-              />
+          <Input
+            label="Username"
+            type="text"
+            value={username}
+            name="username"
+            onChange={handleUsernameChange}
+            validData={validInput.username}
+          />
 
-              <Input
-                label="Email"
-                type="text"
-                value={email}
-                name="email"
-                onChange={handleEmailChange}
-                validData={validInput.email}
-              />
+          <Input
+            label="Email"
+            type="text"
+            value={email}
+            name="email"
+            onChange={handleEmailChange}
+            validData={validInput.email}
+          />
 
-              <Input
-                label="Password"
-                type="password"
-                value={password}
-                name="password"
-                onChange={handlePasswordChange}
-                validData={validInput.password}
-              />
+          <Input
+            label="Password"
+            type="password"
+            value={password}
+            name="password"
+            onChange={handlePasswordChange}
+            validData={validInput.password}
+          />
 
-              <SubmitButton text="Register" disabled={activeButton()} />
+          <SubmitButton text="Register" disabled={activeButton()} />
 
-            </form>
-          </div>
-
-          <div className="footer-form">
-            <div className="footer-block">
-              <span> Already have an account?</span>
-              <Link to="/login" className="sign-in-link">
-                <span className="text-sign-in">Sign in</span>
-              </Link>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
 
-    </div>
+      <div className="footer-form">
+        <div className="footer-block">
+          <span> Already have an account?</span>
+          <Link to="/login" className="sign-in-link">
+            <span className="text-sign-in">Sign in</span>
+          </Link>
+        </div>
+      </div>
+    </FormBackground>
   )
 }
 

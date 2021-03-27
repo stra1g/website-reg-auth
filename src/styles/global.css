@@ -13,42 +13,6 @@ body, input, button, textarea {
     font: 600 18px Montserrat, sans-serif;
 }
 /* weight, size, font */
-
-.main {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #AF59F2 0%, rgba(255, 255, 255, 0) 100%), #310198;
-
-  display: flex;
-  justify-content: center;
-}
-
-.main .content {
-  background: rgba(235, 231, 231, 0.925);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-
-  position: relative;
-  top: 87px;
-
-  width: 900px;
-  height: 630px;
-}
-
-.form{
-  padding: 0 16px;
-
-  display: flex;
-  max-width: 364px;
-  flex-direction: column;
-  
-  position: absolute;
-  top: 0;
-}
-
 .error-content{
   display: flex;
   justify-content: center;
