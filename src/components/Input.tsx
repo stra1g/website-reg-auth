@@ -1,5 +1,6 @@
 import React from 'react'
 import InputIcon from './InputIcon'
+import InputBallonError from './InputBallonError'
 
 import '../styles/components/input.css'
 
@@ -34,15 +35,12 @@ function Input(props: Props) {
                 onChange={props.onChange}
                 autoComplete="off"
               />
-              
                 { props.validData && props.value !== '' &&
                   <InputIcon isValid={props.validData.isValid}/>
                 }
             </div>
             { props.validData && props.value !== '' && !props.validData.isValid &&
-              <div className="ballon-error">                        
-                  <span>{props.validData.message}</span>
-              </div>
+              <InputBallonError message={props.validData.message}/>
             } 
           </div>
         </div>
