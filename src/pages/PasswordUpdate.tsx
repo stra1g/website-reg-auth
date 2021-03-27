@@ -3,7 +3,9 @@ import { Link, RouteComponentProps } from 'react-router-dom'
 import { validatePassword, validateConfirmPassword } from '../utils/inputValidation'
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import * as queryString from 'query-string'
+
 import api from '../services/api'
+import SubmitButton from '../components/SubmitButton'
 
 import logo from '../images/logo.svg'
 
@@ -160,11 +162,13 @@ function PasswordUpdate(props: RouteComponentProps) {
                 </label>
               </div>
 
-              <div className="button-box">
+              {/* <div className="button-box">
                 <button className="confirm-button" type="submit" disabled={activeButton()}>
                   Update Password
                 </button>
-              </div>
+              </div> */}
+
+              <SubmitButton text="Update Password" disabled={activeButton()}/>
             </form>
           </div>
 

@@ -1,0 +1,33 @@
+.button-box{
+  padding: 10px;
+
+  display: flex;
+  height: 64px;
+  justify-content: center;
+}
+
+.button-box .confirm-button{
+  padding: 10px;
+  border: none;
+  color: #fff;
+  background-color: #42078E;
+  border-radius: 20px;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+.button-box .confirm-button:hover {
+  background: #6a25c4;
+  cursor: pointer;
+}
+
+button.confirm-button[disabled], button.confirm-button[disabled]:hover{
+  background-color: #a586ce;
+  cursor: initial;
+}

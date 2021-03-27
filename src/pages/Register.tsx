@@ -4,6 +4,7 @@ import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
 import api from '../services/api'
 import { validateName, validateUsername, validateEmail, validatePassword } from '../utils/inputValidation'
+import SubmitButton from '../components/SubmitButton'
 
 import logo from '../images/logo.svg'
 
@@ -267,11 +268,8 @@ function Register() {
                 </label>
               </div>
 
-              <div className="button-box">
-                <button className="confirm-button" id="confirm-button" type="submit" disabled={activeButton()}>
-                  Register
-                </button>
-              </div>
+              <SubmitButton text="Register" disabled={activeButton()}/>
+
             </form>
           </div>
 

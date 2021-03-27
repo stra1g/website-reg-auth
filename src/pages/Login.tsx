@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import FormError from '../components/FormError'
 import {AuthContext} from '../contexts/auth'
+import SubmitButton from '../components/SubmitButton'
 
 import logo from '../images/logo.svg'
 
@@ -80,11 +81,7 @@ function Login() {
                 </label>
               </div>
 
-              <div className="button-box">
-                <button className="confirm-button" type="submit">
-                  Log In
-                </button>
-              </div>
+              <SubmitButton text="Log In"/>
             </form>
           </div>
 

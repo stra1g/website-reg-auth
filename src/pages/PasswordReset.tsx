@@ -4,6 +4,7 @@ import api from '../services/api'
 import history from '../utils/history'
 
 import logo from '../images/logo.svg'
+import SubmitButton from '../components/SubmitButton'
 
 import '../styles/pages/passwordReset.css'
 
@@ -52,11 +53,7 @@ function PasswordReset() {
                 </label>
               </div>
 
-              <div className="button-box">
-                <button className="confirm-button" type="submit">
-                  Send reset link to email
-                </button>
-              </div>
+              <SubmitButton text="Send reset link to email"/>
             </form>
           </div>
 
