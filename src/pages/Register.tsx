@@ -7,8 +7,6 @@ import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
 import FormHeader from '../components/FormHeader'
 
-import logo from '../images/logo.svg'
-
 import '../styles/pages/register.css'
 
 interface ValidInput {

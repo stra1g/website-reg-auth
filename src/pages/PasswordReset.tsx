@@ -1,9 +1,8 @@
-import React, { FormEvent, useState, useContext } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../services/api'
 import history from '../utils/history'
 
-import logo from '../images/logo.svg'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
 import FormHeader from '../components/FormHeader'

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useContext, ChangeEvent, useEffect } from 'react'
+import React, { FormEvent, useState, ChangeEvent, useEffect } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { validatePassword, validateConfirmPassword } from '../utils/inputValidation'
 import * as queryString from 'query-string'
@@ -7,8 +7,6 @@ import api from '../services/api'
 import SubmitButton from '../components/SubmitButton'
 import Input from '../components/Input'
 import FormHeader from '../components/FormHeader'
-
-import logo from '../images/logo.svg'
 
 import '../styles/pages/passwordUpdate.css'
 

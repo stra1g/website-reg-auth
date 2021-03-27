@@ -8,12 +8,10 @@ import Input from '../components/Input'
 import FormHeader from '../components/FormHeader'
 import FormError from '../components/FormError'
 
-import logo from '../images/logo.svg'
-
 import '../styles/pages/login.css'
 
 function Login() {
-  const { signed, signIn, authError } = useContext(AuthContext)
+  const { signIn, authError } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

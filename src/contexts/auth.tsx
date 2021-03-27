@@ -36,8 +36,7 @@ const AuthProvider: React.FC = ({children}) => {
   }
 
   async function signOut(){
-    // just gonna work when sends the JWT in request
-    const response = await api.post('/logout')
+    await api.post('/logout')
 
     Cookies.remove('c_usr')
 
